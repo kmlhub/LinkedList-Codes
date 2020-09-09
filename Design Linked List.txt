@@ -1,0 +1,145 @@
+class MyLinkedList {
+
+   
+    
+    class node{
+        int data;
+        node next;
+        public node()
+        {
+            
+        }
+        public node(int d)
+        {
+            this.data=d;
+            this.next=null;
+        }
+    }
+    
+      private node head;
+    private int count;
+     public MyLinkedList() {
+         head = new node();
+         count=0;
+    }
+    
+   
+   
+    
+    
+   
+    
+    /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
+    public int get(int index) {
+              if(index>= count)
+                  return -1;
+        
+    node temp=head;
+    while(index>=1)
+    {
+        temp=temp.next;
+        index--;
+    }
+        return temp.data;
+    
+    
+    
+    
+    }
+    
+    
+    /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
+    public void addAtHead(int val) {
+        node newN=new node(val);
+        if(count==0)
+        {
+            head=newN;
+        }
+        else
+        {
+            newN.next=head;
+            head=newN;
+        }
+        count++;
+        
+    }
+    
+    
+    
+    
+    
+    /** Append a node of value val to the last element of the linked list. */
+    public void addAtTail(int val) {
+        if(count==0)
+        {
+            addAtHead(val);
+        }
+        node newN=new node(val);
+        node temp=head;
+        while(temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=newN;
+        count++;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
+    public void addAtIndex(int index, int val) {
+     if(index==count)
+        {
+          addAtTail(val);
+        }
+        else if(index ==0)
+        {
+        addAtHead(val);
+        }
+        else
+        {
+            int cnt=0;
+            node temp=head;
+            while(cnt<index-1)
+            {
+                temp=temp.next;
+                cnt++;
+            }
+            node newN=new node(val);
+             newN.next=temp.next;
+            temp.next=newN;
+            count++;
+           
+        }
+    }
+    
+    /** Delete the index-th node in the linked list, if the index is valid. */
+    public void deleteAtIndex(int index) {
+         if(index>=count || index<0)
+            return ;
+        else if(index==0)
+        {
+            head=head.next;
+        }
+        else
+        {
+            int cnt=0;
+            node temp=head;
+            while(cnt<index-1)
+            {
+                temp=temp.next;
+                cnt++;
+            }
+            temp.next=temp.next.next;
+        }
+        count--;
+        
+        
+    }
+}
