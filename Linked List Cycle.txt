@@ -1,0 +1,19 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null || head.next==null || head.next.next==null)
+            return false;
+        //System.out.println(pos);
+        ListNode temp1=head;
+        ListNode temp2=head;
+        while(temp1!=null && temp1.next!=null)
+        {   temp1=temp1.next.next;
+            temp2=temp2.next;
+            if(temp1==temp2)
+            {System.out.println(temp1.val);
+            return true;}
+           
+        }
+        return false;
+
+    }
+}
