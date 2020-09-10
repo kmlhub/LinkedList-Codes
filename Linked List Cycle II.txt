@@ -1,0 +1,29 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        if(head==null || head.next==null || head.next.next==null)
+            return null;
+        //System.out.println(pos);
+        ListNode temp1=head;
+        ListNode temp2=head;
+        boolean flag=false;
+        while(temp1!=null && temp1.next!=null)
+        {   temp1=temp1.next.next;
+            temp2=temp2.next;
+            if(temp1==temp2)
+            {flag=true;
+             break;
+            }
+         }
+        if(flag)
+        {
+            temp1=head;
+            while(temp1!=temp2)
+            {
+                temp1=temp1.next;
+                temp2=temp2.next;
+            }return temp1;
+        }
+        return null;
+
+    }
+}
